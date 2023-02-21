@@ -16,39 +16,27 @@
 	  <script src="assets/wiggle.jquery.js" type="text/javascript"></script>
 	<!-- Animated collapsibles -->
 	<script> 
+		var textOptions = ["Where's my brother?", "Donde esta mi hermano?", "Wo ist mein Bruder?", "Quechee", "Where art thine brethren?", "Where isith my bizith?"]
+
 		$(document).ready(function(){
-			$('#wave').hover(function() {
-				$('#wave').wiggle('start');
-			},
-			function() {
-				$('#wave').wiggle('stop');
-			});
 
+			const animated = document.getElementById("animated-text");
 
-			$( "#about-title" ).click(function() {
-			  	if ( $( "#about-dropdown" ).is( ":hidden" ) ) {
-					$( "#about-dropdown" ).slideDown( "slow", function() {});
-				} else {
-					$( "#about-dropdown" ).slideUp( "slow", function() {});
-				}
-			});
+			animated.innerText = textOptions[Math.floor(Math.random() * 6)];
 
-			$( "#contact-title" ).click(function() {
-				if ( $( "#contact-dropdown" ).is( ":hidden" ) ) {
-					$( "#contact-dropdown" ).slideDown( "slow", function() {});
-				} else {
-					$( "#contact-dropdown" ).slideUp( "slow", function() {});
-				}
-			});
-
-			$( "#projects-title" ).click(function() {
-				if ( $( "#projects-dropdown" ).is( ":hidden" ) ) {
-					$( "#projects-dropdown" ).slideDown( "slow", function() {});
-				} else {
-					$( "#projects-dropdown" ).slideUp( "slow", function() {});
-				}
+			//Add animation event listener, with attached function.
+			animated.addEventListener('animationend', (event) => {
+				if (event.animationName == "blink") {
+			  		console.log('Animation ended');
+			  		document.getElementById("password-input").focus();
+					document.getElementById("animated-text").style["border-right"] = "0px";
+			  	}
 			});
 		});
+
+		function showInput(){
+			document.getElementById("password-input").focus();
+		}
 	</script>
   </head>
 
@@ -66,8 +54,10 @@
 			</span>
 
 			<div class="sub-header">
-			    <div class="typed-out">Where's my brother?</div>
+			    <div id="animated-text" class="typed-out">Where's my brother?</div>
 			</div>
+			<div class="password-input-container"><input autocomplete="off" id="password-input"></input></div>
+
     	</div>	
     </div>
 

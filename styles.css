@@ -73,12 +73,12 @@ a {
 
 .typed-out{
     overflow: hidden;
-    border-right: .15em solid orange;
+    border-right: 1px solid orange;
     white-space: nowrap;
     width: 0;
     animation: 
       typing 1s steps(15, end) forwards,
-      blink .8s infinite;
+      blink 1s 3;
 }
 
 
@@ -89,9 +89,27 @@ a {
 }
 
 @keyframes blink {
-  from { border-color: transparent }
-  to { border-color: orange; }
+  from { border-color: transparent; }
+  to { border-color: #ffa500; }
 }
 
 
+input {
+  display:table-cell; 
+  width:100%;
+  border: none;
+  background: none;
+  color: white;
+  outline: none;
+  font-size: 80px;
+  caret-color: #ffa500;
+	font-family: 'Didact Gothic', sans-serif;
+	height:  92px;
+	font-size: 70px;
+}
+
+.password-input-container {
+	width: 100%;
+	height:  92px;
+}
 
