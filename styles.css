@@ -1,0 +1,97 @@
+body {
+	color:#000;
+    color:var(--font-color);
+    background:rgb(243,243,243);
+    background:var(--bg-color);
+}
+
+a {
+	color: var(--link-color);
+}
+
+.container {
+	padding: 100px;
+	flex: 1;
+}
+
+.content {
+	flex: 50%;
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+.header-text {
+	font-size: 100px;
+}
+
+.sub-header {
+	font-size: 70px;
+    display: inline-block;
+}
+
+.sub-header-content {
+	display: inline-block;
+}
+
+.header {
+	font-size: 0px;
+}
+
+.name {
+	color: #ffa500;
+	font-weight: 700;
+}
+
+#dark-mode-icon {
+	fill: var(--font-color);
+	height: 50px;
+	width: 50px;
+	position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 50px;
+	cursor: pointer;
+}
+
+:root {
+    --font-color: #cecece;
+    --link-color:#d4a651;
+    --link-white-color:#c1bfbd;
+    --bg-color: rgb(37, 37, 37);
+	--section-bg-color: rgb(59, 59, 59);
+	--section-font-color: rgb(233, 233, 233);
+}
+
+[data-theme="dark"] {
+    --font-color: #cecece;
+    --link-color:#d4a651;
+    --link-white-color:#c1bfbd;
+    --bg-color: rgb(37, 37, 37);
+	--section-bg-color: rgb(59, 59, 59);
+	--section-font-color: rgb(233, 233, 233);
+
+}
+
+.typed-out{
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    width: 0;
+    animation: 
+      typing 1s steps(15, end) forwards,
+      blink .8s infinite;
+}
+
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from { border-color: transparent }
+  to { border-color: orange; }
+}
+
+
+
