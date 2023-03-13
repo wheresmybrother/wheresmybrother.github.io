@@ -88,6 +88,19 @@ a {
   to { width: 100% }
 }
 
+@keyframes undotyping {
+  from { width: 100% }
+  to { width: 0 }
+}
+
+.undo-typing-animation {
+ animation: undotyping  1s steps(15, end) forwards;
+}
+
+.undo-typing-animation-double {
+ animation: undotyping  0.5s steps(15, end) forwards;
+}
+
 @keyframes blink {
   from { border-color: transparent; }
   to { border-color: #ffa500; }
@@ -120,5 +133,5 @@ input {
 }
 
 #this-is-my-boy {
-  height: 200px;
+  height: 350px;
 }

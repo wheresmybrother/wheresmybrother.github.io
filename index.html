@@ -27,16 +27,34 @@
 			//Add animation event listener, with attached function.
 			animated.addEventListener('animationend', (event) => {
 				if (event.animationName == "blink") {
-			  		console.log('Animation ended');
-			  		document.getElementById("password-input").focus();
+			  	console.log('Animation ended');
+			  	document.getElementById("password-input").focus();
 					document.getElementById("animated-text").style["border-right"] = "0px";
-			  	}
+			  }
 			});
+
+
+			const passwordForm = document.getElementById("password-input-form");
+			passwordForm.addEventListener("submit", passwordSubmit);
 		});
 
 		function showInput(){
 			document.getElementById("password-input").focus();
 		}
+
+		function passwordSubmit(event) {
+			const form = event.target;
+      const userInputField = form.elements['password-input'];
+			if (userInputField.value == "squanch") {
+				document.getElementById("animated-text").classList.toggle("undo-typing-animation")
+				document.getElementById("password-input-form").classList.toggle("undo-typing-animation-double")
+
+				console.log(`Form Submitted! Timestamp: ${event.timeStamp}`);
+			}
+		  event.preventDefault();
+		}
+
+
 	</script>
   </head>
 
@@ -47,7 +65,7 @@
 			<span class="header-wrapper">
 				<p class="header">
 					<span class="header-text">
-						<span class="name">FUCK</span>
+						<span class="name">tmp</span>
 					</span>
 				</p>
 				
@@ -56,7 +74,11 @@
 			<div class="sub-header">
 			    <div id="animated-text" class="typed-out">Where's my brother?</div>
 			</div>
-			<div class="password-input-container"><input autocomplete="off" id="password-input"></input></div>
+			<div class="password-input-container">
+				<form id="password-input-form">
+					<input name="password-input" autocomplete="off" id="password-input">
+				</form>		
+			</input></div>
 
     	</div>	
     </div>
