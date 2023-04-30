@@ -135,3 +135,45 @@ input {
 #this-is-my-boy {
   height: 350px;
 }
+
+#menu-buttons-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.button-container {
+	display: flex;
+	flex: 50%;
+}
+
+.menu-button {
+	display: flex;
+	padding: 40px;
+	font-size: 40px;
+	font-family: 'Didact Gothic', sans-serif;
+	background: none;
+	border:  2px #ffa500 solid;
+	color:  #ffa500;
+	width: 300px;
+}
+
+
+.button-inner-container {
+	text-align: center;
+	width: 100%;
+}
+
+.menu-button-left {
+	margin-left: auto;
+	margin-right:  20px;
+}
+
+.menu-button-right {
+	margin-right: auto;
+	margin-left:  20px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: #00000059;
+}
