@@ -27,16 +27,62 @@
 			//Add animation event listener, with attached function.
 			animated.addEventListener('animationend', (event) => {
 				if (event.animationName == "blink") {
-			  		console.log('Animation ended');
-			  		document.getElementById("password-input").focus();
+			  	console.log('Animation ended');
+			  	document.getElementById("password-input").focus();
 					document.getElementById("animated-text").style["border-right"] = "0px";
-			  	}
+			  }
 			});
+			
+			document.getElementById("menu-button-left").addEventListener('click', (event) => {
+
+				document.getElementById("animated-text");
+					animated.innerText = "Enter password";
+			});
+
+
+
+			const passwordForm = document.getElementById("password-input-form");
+			passwordForm.addEventListener("submit", passwordSubmit);
 		});
+		
 
 		function showInput(){
 			document.getElementById("password-input").focus();
 		}
+
+		function passwordSubmit(event) {
+			const form = event.target;
+			const userInputField = form.elements['password-input'];
+			// if (userInputField.value == "squanch") {
+			// 	document.getElementById("animated-text").classList.toggle("undo-typing-animation")
+			// 	document.getElementById("password-input-form").classList.toggle("undo-typing-animation-double")
+
+			// 	console.log(`Form Submitted! Timestamp: ${event.timeStamp}`);
+			// }
+			event.preventDefault();
+			fetch("https://bxmy2av4z5hqgocctzgwyhol4i0oneiy.lambda-url.us-east-1.on.aws/ ", {
+				method: "POST",
+				headers: {'Content-Type': 'application/json'}, 
+				body: JSON.stringify({"password": userInputField.value})
+			})
+			.then((response) => response.json())
+  			.then((res) => {
+				  if (res["video_url"] != null) {
+					console.log("Request complete! response:", res);
+					// document.getElementById("password-input")
+					document.getElementById("video-content").style.display = "inline";
+					document.getElementById("video-elem").setAttribute('src',res['video_url']);
+					document.getElementById("video-elem").setAttribute('type', 'video/mp4');
+					document.getElementById("video-elem").scrollIntoView();
+					
+				  }
+
+			});
+
+			//tmp
+		}
+
+
 	</script>
   </head>
 
@@ -44,24 +90,49 @@
 	
     <div class="container">
     	<div class="content">
-			<span class="header-wrapper">
-				<p class="header">
-					<span class="header-text">
-						<span class="name">FUCK</span>
-					</span>
-				</p>
-				
-			</span>
+				<span class="header-wrapper">
+					<p class="header">
+						<span class="header-text">
+							<span class="name">FUCK</span>
+						</span>
+					</p>
+					
+				</span>
 
-			<div class="sub-header">
-			    <div id="animated-text" class="typed-out">Where's my brother?</div>
-			</div>
-			<div class="password-input-container"><input autocomplete="off" id="password-input"></input></div>
+				<div class="sub-header">
+				    <div id="animated-text" class="typed-out">Where's my brother?</div>
+				</div>
+				<div class="password-input-container">
+					<form id="password-input-form"></input>
+						<input name="password-input" autocomplete="off" id="password-input">
+					</form>		
+				</div>
+				<div id="menu-buttons-container">
+					<div class="button-container">
+						<button class="menu-button menu-button-left" id="menu-button-left">
+							<span class="button-inner-container">
+								Trailer 4
+							</span>
+						</button>
+					</div>
+					<!-- <div class="button-container">
+							<button class="menu-button menu-button-right">
+								<span class="button-inner-container">
+									Games
+								</span>
+							</button>
+						</span>
+					</div> -->
+				<!-- </div> -->
 
     	</div>	
     </div>
     <div id="this-is-my-boy-container">
     	<img id="this-is-my-boy" src="res/thisismyboy.gif">
     </div>
+
+	<div id="video-content">
+		<video id="video-elem" autoplay></video>
+	</div>
   </body>
 </html>
